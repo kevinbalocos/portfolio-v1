@@ -48,7 +48,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
             >
-              <FaGithub size={10  } />
+              <FaGithub size={10} />
             </a>
             <a
               href="https://www.facebook.com/kevin.balocos.3/"
@@ -56,7 +56,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
             >
-              <FaFacebook size={10  } />
+              <FaFacebook size={10} />
             </a>
             <a
               href="https://www.instagram.com/jeyduuuuuu/"
@@ -64,7 +64,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
             >
-              <FaInstagram size={10 } />
+              <FaInstagram size={10} />
             </a>
             <a
               href="https://www.linkedin.com/in/jade-kevin-balocos-51b13b358/"
@@ -72,7 +72,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
             >
-              <FaLinkedin size={10  } />
+              <FaLinkedin size={10} />
             </a>
           </div>
         </div>
