@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import profileImg from "../assets/images/portfolio_img2.jpg";
+import profileImg from "/src/assets/images/portfolio_img2.jpg";
+
 import ParticlesBg from "particles-bg";
 
 const TypingEffect = ({
@@ -68,7 +69,7 @@ const BackgroundProfile = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-75px)]">
+    <div className="">
       <div className="bg-white shadow-2xl rounded-lg w-full h-auto flex flex-col p-6 relative">
         <div className="absolute inset-0 z-0">
           <ParticlesBg type="cobweb" num={3} color="#0c0c0f" />

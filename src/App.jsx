@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "./components/navbar";
-import ExpertiseSkills from "./components/right_section_expertise_skills";
-import BackgroundProfile from "./components/background_profile";
+import ExpertiseSkills from "./components/RightSection/right_section_expertise_skills";
+import BackgroundProfile from "./components/LeftSection/background_profile";
+import TecnologiesUsed from "./components/RightSection/technologies_used";
 import Projects from "./components/MainContent/projects";
 import ParticlesBg from "particles-bg";
 
@@ -19,7 +20,7 @@ const App = () => {
         <Navbar />
 
         {/* Main Container with Horizontal Scroll on Mobile */}
-        <div className="mx-3 h-[calc(100%-60px)] flex flex-grow flex-col md:flex-row overflow-x-auto">
+        <div className="mx-3 h-[calc(100vh-75px)] flex flex-grow flex-col md:flex-row overflow-x-auto">
           {/* Left Sidebar - Scrollable */}
           <aside className="w-full max-h-screen md:w-[250px] lg:min-w-[350px] p-1 flex flex-col z-10  overflow-y-auto">
             <BackgroundProfile />
@@ -31,8 +32,9 @@ const App = () => {
           </main>
 
           {/* Right Sidebar - Scrollable */}
-          <aside className="w-full max-h-screen md:w-[250px] lg:min-w-[350px] p-1 flex flex-col z-10  overflow-y-auto">
+          <aside className="w-full max-h-screen  md:w-[250px] lg:min-w-[350px] gap-1  p-1 flex flex-col z-10  overflow-y-auto">
             <ExpertiseSkills />
+            <TecnologiesUsed />
           </aside>
         </div>
       </div>
