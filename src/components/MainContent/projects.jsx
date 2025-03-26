@@ -21,6 +21,34 @@ const projectData = [
     liveLink: "https://example.com/faculty-ranking",
   },
   {
+    title: "Faculty Ranking System and Data Management",
+    description:
+      "Streamlines faculty evaluations with real-time tracking, dashboards, and automation.",
+    image: images["/src/assets/images/portfolio_img2.jpg"].default,
+    technologies: [
+      "CodeIgniter",
+      "Tailwind CSS",
+      "Chart.js",
+      "PHP",
+      "Javascript",
+    ],
+    liveLink: "https://example.com/faculty-ranking",
+  },
+  {
+    title: "Faculty Ranking System and Data Management",
+    description:
+      "Streamlines faculty evaluations with real-time tracking, dashboards, and automation.",
+    image: images["/src/assets/images/portfolio_img2.jpg"].default,
+    technologies: [
+      "CodeIgniter",
+      "Tailwind CSS",
+      "Chart.js",
+      "PHP",
+      "Javascript",
+    ],
+    liveLink: "https://example.com/faculty-ranking",
+  },
+  {
     title: "Queueing System (MERN Stack)",
     description:
       "A real-time queueing system with MongoDB, optimizing service efficiency.",
@@ -75,11 +103,11 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="relative bg-neutral-100  p-4 rounded-lg shadow-lg">
+    <div className="relative bg-neutral-100 p-1 rounded-lg shadow-lg">
       {/* Scrollable Project List */}
       <div
         ref={scrollRef}
-        className="flex flex-col gap-6  overflow-y-auto relative"
+        className="flex flex-col gap-1 h-[calc(100vh-110px)]  overflow-y-auto relative"
       >
         {projectData.map((project, index) => {
           const isEven = index % 2 === 0;
@@ -120,7 +148,7 @@ const Projects = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="text-xs border border-teal-600 text-teal-900 text-sm px-3 py-1 rounded-lg"
+                      className="text-xs border border-teal-600 text-teal-900  px-3 py-1 rounded-lg"
                     >
                       {tech}
                     </span>
@@ -145,10 +173,10 @@ const Projects = () => {
 
       {/* White Shadow Effects */}
       {!isTop && (
-        <div className="absolute top-0 left-0 w-full h-10 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
       )}
       {!isBottom && (
-        <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
       )}
     </div>
   );
