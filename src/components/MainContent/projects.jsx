@@ -171,7 +171,6 @@ const Projects = () => {
         })}
       </div>
 
-      {/* White Shadow Effects */}
       {!isTop && (
         <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
       )}

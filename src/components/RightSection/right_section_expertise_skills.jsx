@@ -12,8 +12,8 @@ import {
 const RightSectionExpertiseSkills = () => {
   return (
     <div className="">
-      <div className="bg-white shadow-xl rounded-lg p-6 max-w-lg mx-auto overflow-auto  h-[350px] border border-gray-200">
-        {/* Expertise Section */} 
+      <div className="bg-white shadow-xl rounded-lg p-6 max-w-lg mx-auto overflow-auto  h-[500px] border border-gray-200">
+        {/* Expertise Section */}
         <h2 className="text-2xl font-semibold text-black mb-4 flex items-center gap-2">
           <Bolt className="w-12 h-12 text-black" /> Expertise & Technical Skills
         </h2>
