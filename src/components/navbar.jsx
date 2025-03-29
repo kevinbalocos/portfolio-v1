@@ -1,23 +1,22 @@
 import React from "react";
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"; // Import icons
+import { Sun, Moon } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ darkMode, setDarkMode }) => {
   return (
     <>
       {/* Top Navbar */}
-      <nav className="px-5 py-4   z-50 dark:bg-gray-900">
+      <nav className="px-5 py-4   z-50 ">
         <div className="flex justify-between items-center">
           {/* Logo / Title */}
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            JEYDUUU
-          </h1>
+          <h1 className="text-xl font-bold text-gray-900 ">JEYDUUU</h1>
 
           {/* Navigation Links (Visible Only on Desktop) */}
           <ul className="hidden md:flex space-x-6">
             <li>
               <a
                 href="#"
-                className="hover:text-gray-400 transition duration-300 text-gray-900 dark:text-white"
+                className="hover:text-gray-400 transition duration-300 text-gray-900 "
               >
                 Home
               </a>
@@ -25,7 +24,7 @@ const Navbar = () => {
             <li>
               <a
                 href="#"
-                className="hover:text-gray-400 transition duration-300 text-gray-900 dark:text-white"
+                className="hover:text-gray-400 transition duration-300 text-gray-900 "
               >
                 About
               </a>
@@ -33,7 +32,7 @@ const Navbar = () => {
             <li>
               <a
                 href="#"
-                className="hover:text-gray-400 transition duration-300 text-gray-900 dark:text-white"
+                className="hover:text-gray-400 transition duration-300 text-gray-900 "
               >
                 Contact
               </a>
@@ -74,6 +73,17 @@ const Navbar = () => {
             >
               <FaLinkedin size={10} />
             </a>
+
+            <a
+              onClick={() => setDarkMode(!darkMode)}
+              className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
+            >
+              {darkMode ? (
+                <Sun className="text-teal-400" size={10} />
+              ) : (
+                <Moon className="text-white" size={10} />
+              )}
+            </a>
           </div>
         </div>
       </nav>
@@ -95,6 +105,14 @@ const Navbar = () => {
               className="text-gray-900 dark:text-white hover:text-gray-400 transition duration-300"
             >
               About
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="text-gray-900 dark:text-white hover:text-gray-400 transition duration-300"
+            >
+              Contact
             </a>
           </li>
           <li>

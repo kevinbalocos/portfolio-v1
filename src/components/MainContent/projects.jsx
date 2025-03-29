@@ -10,7 +10,9 @@ const projectData = [
     title: "Faculty Ranking System and Data Management",
     description:
       "Streamlines faculty evaluations with real-time tracking, dashboards, and automation.",
-    image: images["/src/assets/images/portfolio_img2.jpg"].default,
+    image:
+      images["/src/assets/images/RANKINGsystem-white-dashboard-portfolio.png"]
+        .default,
     technologies: [
       "CodeIgniter",
       "Tailwind CSS",
@@ -20,39 +22,14 @@ const projectData = [
     ],
     liveLink: "https://example.com/faculty-ranking",
   },
-  {
-    title: "Faculty Ranking System and Data Management",
-    description:
-      "Streamlines faculty evaluations with real-time tracking, dashboards, and automation.",
-    image: images["/src/assets/images/portfolio_img2.jpg"].default,
-    technologies: [
-      "CodeIgniter",
-      "Tailwind CSS",
-      "Chart.js",
-      "PHP",
-      "Javascript",
-    ],
-    liveLink: "https://example.com/faculty-ranking",
-  },
-  {
-    title: "Faculty Ranking System and Data Management",
-    description:
-      "Streamlines faculty evaluations with real-time tracking, dashboards, and automation.",
-    image: images["/src/assets/images/portfolio_img2.jpg"].default,
-    technologies: [
-      "CodeIgniter",
-      "Tailwind CSS",
-      "Chart.js",
-      "PHP",
-      "Javascript",
-    ],
-    liveLink: "https://example.com/faculty-ranking",
-  },
+
   {
     title: "Queueing System (MERN Stack)",
     description:
       "A real-time queueing system with MongoDB, optimizing service efficiency.",
-    image: images["/src/assets/images/portfolio_img2.jpg"].default,
+    image:
+      images["/src/assets/images/QUEUEINGsystem-white-landtax-portfolio.png"]
+        .default,
     technologies: [
       "CodeIgniter",
       "PHP",
