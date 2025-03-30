@@ -1,143 +1,147 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Code,
   BarChart,
   Bolt,
-  Database,
   Palette,
   FileText,
-  FolderKanban,
+  ChevronDown,
 } from "lucide-react";
 
-const RightSectionExpertiseSkills = () => {
+const skills = [
+  {
+    icon: <Code />,
+    title: "Web & App Development",
+    level: 95,
+    description:
+      "Proficient in CodeIgniter, React (Vite), MongoDB, and Tailwind CSS.",
+  },
+  {
+    icon: <BarChart />,
+    title: "Data Science & Analytics",
+    level: 85,
+    description: "Experienced in machine learning, AI, and data visualization.",
+  },
+  {
+    icon: <Bolt />,
+    title: "Real-Time Systems",
+    level: 90,
+    description: "Expert in WebSockets and live-data applications.",
+  },
+  {
+    icon: <Palette />,
+    title: "UI/UX & Digital Design",
+    level: 80,
+    description: "Skilled in designing futuristic, engaging user interfaces.",
+  },
+  {
+    icon: <FileText />,
+    title: "File Management Systems",
+    level: 88,
+    description:
+      "Developed advanced file handling with structured categorization.",
+  },
+];
+
+const RightSectionExpertiseSkills = ({ darkMode }) => {
+  const [expanded, setExpanded] = useState(true);
+  const [highlightedSkill, setHighlightedSkill] = useState(0);
+  const [sortedSkills, setSortedSkills] = useState(skills);
+
+  // Auto-highlight different expertise every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHighlightedSkill((prev) => (prev + 1) % skills.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Sorting function
+  const sortSkills = () => {
+    const sorted = [...sortedSkills].sort((a, b) => b.level - a.level);
+    setSortedSkills(sorted);
+  };
+
   return (
     <div className="">
-      <div className="bg-white shadow-xl rounded-lg p-6 max-w-lg mx-auto overflow-auto  min-h-[500px] border border-gray-200">
-        {/* Expertise Section */}
-        <h2 className="text-2xl font-semibold text-black mb-4 flex items-center gap-2">
-          <Bolt className="w-12 h-12 text-black" /> Expertise & Technical Skills
-        </h2>
+      <div
+        className={`shadow-md rounded-lg p-5 border transition ${
+          darkMode
+            ? "bg-gray-900 text-white border-gray-700"
+            : "bg-white text-gray-900 border-gray-200"
+        }`}
+      >
+        {/* Toggle Section */}
+        <div
+          className="flex justify-between items-center cursor-pointer"
+          onClick={() => setExpanded(!expanded)}
+        >
+          <h2
+            className={`text-md font-semibold uppercase tracking-tighter flex items-center gap-2 ${
+              darkMode ? "text-white" : "text-gray-900"
+            }`}
+          >
+            <Bolt className="w-6 h-6 text-teal-500" /> Expertise & Skills
+          </h2>
+          <ChevronDown
+            className={`w-5 h-5 text-teal-600 transition-transform ${
+              expanded ? "rotate-180" : ""
+            }`}
+          />
+        </div>
 
-        <ul className="grid gap-4 text-gray-800 text-base">
-          <li className="flex items-center gap-x-3">
-            <Code className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">Web & App Development</strong>
-              <p className="text-sm text-gray-700">
-                Proficient in CodeIgniter, React (Vite), MongoDB, and Tailwind
-                CSS, developing modern, responsive, and feature-rich
-                applications.
-              </p>
+        {/* Expertise Skills */}
+        {expanded && (
+          <div className="mt-3">
+            <button
+              onClick={sortSkills}
+              className={`w-full text-teal-600 uppercase border border-teal-600 px-3 py-2 rounded-md cursor-pointer transition ${
+                darkMode
+                  ? "bg-gray-800 text-white hover:bg-gray-700 border-teal-500"
+                  : "bg-white text-gray-900 hover:bg-teal-50"
+              }`}
+            >
+              Sort by Proficiency
+            </button>
+
+            <div className="grid grid-cols-1 gap-3 mt-3">
+              {sortedSkills.map((skill, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start gap-3 p-3 rounded-md border shadow-sm transition ${
+                    darkMode
+                      ? `border-gray-600 text-white ${
+                          index === highlightedSkill
+                            ? "bg-gray-800 scale-105 shadow-md"
+                            : "bg-gray-900"
+                        }`
+                      : `border-gray-300 text-gray-900 ${
+                          index === highlightedSkill
+                            ? "bg-gray-100 scale-105 shadow-md"
+                            : "bg-white"
+                        }`
+                  }`}
+                >
+                  <div className="text-teal-400 w-6 h-6">{skill.icon}</div>
+                  <div>
+                    <h3 className="font-medium">{skill.title}</h3>
+                    <p className="text-sm">{skill.description}</p>
+                    <div
+                      className={`w-full h-2 rounded-full mt-2 ${
+                        darkMode ? "bg-gray-700" : "bg-gray-200"
+                      }`}
+                    >
+                      <div
+                        className="bg-teal-500 h-2 rounded-full transition-all"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </li>
-
-          <li className="flex items-center gap-x-3">
-            <BarChart className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">Data Science & Analytics</strong>
-              <p className="text-sm text-gray-700">
-                Passionate about data visualization, statistical analysis, and
-                machine learning, leveraging insights for smarter
-                decision-making.
-              </p>
-            </div>
-          </li>
-
-          <li className="flex items-center gap-x-3">
-            <Bolt className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">Real-Time Systems</strong>
-              <p className="text-sm text-gray-700">
-                Experienced in WebSockets and real-time chat systems, ensuring
-                seamless and interactive user experiences.
-              </p>
-            </div>
-          </li>
-
-          <li className="flex items-center gap-x-3">
-            <Palette className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">UI/UX & Digital Design</strong>
-              <p className="text-sm text-gray-700">
-                Specializes in crafting intuitive, futuristic, and engaging user
-                interfaces to enhance user interaction.
-              </p>
-            </div>
-          </li>
-
-          <li className="flex items-center gap-x-3">
-            <FileText className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">
-                File Management & Document Systems
-              </strong>
-              <p className="text-sm text-gray-700">
-                Developed advanced file upload and categorization systems,
-                enabling structured and dynamic file handling.
-              </p>
-            </div>
-          </li>
-        </ul>
-
-        {/* Projects Section */}
-        <h2 className="text-2xl font-semibold text-black mt-6 mb-4 flex items-center gap-2">
-          <FolderKanban className="w-12 h-12 text-black" /> Key Projects &
-          Innovations
-        </h2>
-
-        <ul className="grid gap-4 text-gray-800 text-base">
-          <li className="flex items-center gap-x-3">
-            <FolderKanban className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">
-                Faculty Ranking & Data Management System
-              </strong>
-              <p className="text-sm text-gray-700">
-                Designed to streamline faculty evaluations with real-time
-                tracking, interactive dashboards, and ranking automation.
-              </p>
-            </div>
-          </li>
-
-          <li className="flex items-center gap-x-3">
-            <FolderKanban className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">
-                Queueing System (MERN Stack)
-              </strong>
-              <p className="text-sm text-gray-700">
-                Developed a real-time queueing system using MongoDB, optimizing
-                service management and efficiency.
-              </p>
-            </div>
-          </li>
-
-          <li className="flex items-center gap-x-3">
-            <FolderKanban className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">
-                Advanced Profile Page UI/UX
-              </strong>
-              <p className="text-sm text-gray-700">
-                Created a modern, interactive profile system with enhanced
-                navigation, animations, and professional aesthetics.
-              </p>
-            </div>
-          </li>
-
-          <li className="flex items-center gap-x-3">
-            <FolderKanban className="w-12 h-12 text-black" />
-            <div>
-              <strong className="text-black">
-                Dynamic User Notification & Messaging System
-              </strong>
-              <p className="text-sm text-gray-700">
-                Implemented custom messaging for targeted admin-user
-                notifications in a CodeIgniter-based system.
-              </p>
-            </div>
-          </li>
-        </ul>
+          </div>
+        )}
       </div>
     </div>
   );
