@@ -59,7 +59,7 @@ const App = () => {
           {/* Right Sidebar */}
           <aside
             className={`w-full md:w-[250px] lg:min-w-[350px] gap-1 p-1 h-[calc(100vh-90px)] flex flex-col z-10 overflow-y-auto 
-  ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"}`}
+  ${darkMode ? " text-white" : " text-gray-900"}`}
           >
             <ExpertiseSkills darkMode={darkMode} />
             <TecnologiesUsed darkMode={darkMode} />

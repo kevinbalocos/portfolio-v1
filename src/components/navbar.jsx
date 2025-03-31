@@ -40,7 +40,8 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           </ul>
 
           {/* Social Media Icons (Always Visible) */}
-          <div className="flex space-x-4">
+          <div className="flex space-x-2 md:space-x-5 lg:space-x-5 ">
+
             <a
               href="https://github.com/kevinbalocos"
               target="_blank"
@@ -76,7 +77,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
 
             <a
               onClick={() => setDarkMode(!darkMode)}
-              className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
+              className="inline-flex items-center justify-center w-5 h-5 bg-black ml-5 text-white rounded-full hover:bg-gray-700 transition duration-300"
             >
               {darkMode ? (
                 <Sun className="text-teal-400" size={10} />
