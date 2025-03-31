@@ -1,9 +1,56 @@
 import React, { useState, useRef, useEffect } from "react";
 import { AiOutlineLink } from "react-icons/ai";
+import { FaPhp, FaJs, FaReact, FaCode, FaChartBar } from "react-icons/fa";
+import {
+  SiCodeigniter,
+  SiTailwindcss,
+  SiFramer,
+  SiSocketdotio,
+} from "react-icons/si";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const images = import.meta.glob("/src/assets/images/*", { eager: true });
+
+// Mapping of technologies to their official URLs and icons
+const techData = {
+  CodeIgniter: {
+    url: "https://codeigniter.com/",
+    icon: <SiCodeigniter className="text-teal-500" />,
+  },
+  "Tailwind CSS": {
+    url: "https://tailwindcss.com/",
+    icon: <SiTailwindcss className="text-teal-500" />,
+  },
+  "Chart.js": {
+    url: "https://www.chartjs.org/",
+    icon: <FaChartBar className="text-teal-500" />,
+  },
+  PHP: {
+    url: "https://www.php.net/",
+    icon: <FaPhp className="text-teal-500" />,
+  },
+  Javascript: {
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    icon: <FaJs className="text-teal-500" />,
+  },
+  Ratchet: {
+    url: "http://socketo.me/",
+    icon: <SiSocketdotio className="text-teal-500" />,
+  },
+  WebSocket: {
+    url: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+    icon: <SiSocketdotio className="text-teal-500" />,
+  },
+  React: {
+    url: "https://react.dev/",
+    icon: <FaReact className="text-teal-500" />,
+  },
+  "Framer Motion": {
+    url: "https://www.framer.com/motion/",
+    icon: <SiFramer className="text-teal-500" />,
+  },
+};
 
 const projectData = [
   {
@@ -22,7 +69,6 @@ const projectData = [
     ],
     liveLink: "https://example.com/faculty-ranking",
   },
-
   {
     title: "Queueing System (MERN Stack)",
     description:
@@ -50,7 +96,7 @@ const projectData = [
   },
 ];
 
-const Projects = () => {
+const Projects = ({ darkMode }) => {
   const scrollRef = useRef(null);
   const [isBottom, setIsBottom] = useState(false);
   const [isTop, setIsTop] = useState(true);
@@ -80,11 +126,15 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="relative bg-neutral-100 p-1 rounded-lg shadow-lg">
+    <div
+      className={`relative p-1 rounded-lg shadow-lg ${
+        darkMode ? "bg-gray-800" : "bg-neutral-100"
+      }`}
+    >
       {/* Scrollable Project List */}
       <div
         ref={scrollRef}
-        className="flex flex-col gap-1 h-[calc(100vh-110px)]  overflow-y-auto relative"
+        className="flex flex-col gap-1 h-[calc(100vh-110px)] overflow-y-auto relative"
       >
         {projectData.map((project, index) => {
           const isEven = index % 2 === 0;
@@ -100,9 +150,11 @@ const Projects = () => {
               initial={{ opacity: 0, x: isEven ? -100 : 100 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className={`group flex flex-col md:flex-row items-center border border-gray-200 ${
+              className={`group flex flex-col md:flex-row items-center ${
                 isEven ? "md:flex-row" : "md:flex-row-reverse"
-              } gap-6 bg-white rounded-lg p-6 shadow-md`}
+              } gap-6 rounded-lg p-6 shadow-md ${
+                darkMode ? "bg-gray-900" : "bg-white"
+              }`}
             >
               {/* Project Image */}
               <div className="w-full md:w-1/2 overflow-hidden rounded-lg">
@@ -115,20 +167,32 @@ const Projects = () => {
 
               {/* Project Details */}
               <div className="w-full md:w-1/2 flex flex-col">
-                <h3 className="text-xl font-semibold text-gray-900 uppercase">
+                <h3
+                  className={`text-xl font-semibold uppercase transition-colors duration-300 ${
+                    darkMode ? "text-white" : "text-gray-900"
+                  }`}
+                >
                   {project.title}
                 </h3>
-                <p className="text-gray-700 mt-2">{project.description}</p>
+                <p className="text-gray-500 mt-2">{project.description}</p>
 
                 {/* Technologies Used */}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
-                    <span
+                    <a
                       key={techIndex}
-                      className="text-xs border border-teal-600 text-teal-900  px-3 py-1 rounded-lg"
+                      href={techData[tech]?.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center gap-2 text-xs border border-teal-400 px-3 py-1 rounded-lg transition
+                        ${
+                          darkMode
+                            ? "text-white hover:bg-teal-900"
+                            : "text-black hover:bg-teal-100"
+                        }`}
                     >
-                      {tech}
-                    </span>
+                      {techData[tech]?.icon} {tech}
+                    </a>
                   ))}
                 </div>
 
@@ -149,10 +213,22 @@ const Projects = () => {
       </div>
 
       {!isTop && (
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
+        <div
+          className={`absolute top-0 left-0 w-full h-20 pointer-events-none ${
+            darkMode
+              ? "bg-gradient-to-b from-gray-900 to-transparent"
+              : "bg-gradient-to-b from-white to-transparent"
+          }`}
+        />
       )}
       {!isBottom && (
-        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+        <div
+          className={`absolute bottom-0 left-0 w-full h-20 pointer-events-none ${
+            darkMode
+              ? "bg-gradient-to-t from-gray-900 to-transparent"
+              : "bg-gradient-to-t from-white to-transparent"
+          }`}
+        />
       )}
     </div>
   );

@@ -48,12 +48,12 @@ const App = () => {
         <div className="mx-3 flex flex-col md:flex-row flex-grow overflow-auto">
           {/* Left Sidebar */}
           <aside className="w-full md:w-[250px] lg:min-w-[350px] h-[calc(100vh-200px)] p-1 flex flex-col z-10 overflow-auto">
-            <BackgroundProfile />
+            <BackgroundProfile darkMode={darkMode} />
           </aside>
 
           {/* Main Content */}
           <main className="w-full p-1 flex flex-col z-10 overflow-auto">
-            <Projects />
+            <Projects darkMode={darkMode} />
           </main>
 
           {/* Right Sidebar */}

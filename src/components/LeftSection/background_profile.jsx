@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import profileImg from "/src/assets/images/portfolio_img2.jpg";
-
 import ParticlesBg from "particles-bg";
 
 const TypingEffect = ({
   text,
-  typingSpeed = 100,
+  typingSpeed = 80,
   deleteSpeed = 50,
-  pauseTime = 1000,
+  pauseTime = 2000,
 }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
@@ -48,7 +47,7 @@ const TypingEffect = ({
   }, []);
 
   return (
-    <span className="whitespace-nowrap">
+    <span className="whitespace-nowrap text-teal-400">
       {displayedText}
       <span
         className={`ml-1 ${
@@ -61,7 +60,7 @@ const TypingEffect = ({
   );
 };
 
-const BackgroundProfile = () => {
+const BackgroundProfile = ({ darkMode }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const toggleDetails = () => {
@@ -69,69 +68,98 @@ const BackgroundProfile = () => {
   };
 
   return (
-    <div className="">
-      <div className="bg-white shadow-2xl rounded-lg w-full h-auto flex flex-col p-6 relative">
-        <div className="absolute inset-0 z-0">
-          <ParticlesBg type="cobweb" num={3} color="#0c0c0f" />
-        </div>
+    <div className="relative w-full max-w-3xl mx-auto">
+      {/* Particle Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <ParticlesBg
+          type="circle"
+          num={5}
+          color={darkMode ? "#ffffff" : "#0c0c0f"}
+        />
+      </div>
 
+      {/* Profile Card */}
+      <div
+        className={`shadow-2xl rounded-xl overflow-hidden relative transition-all duration-500 transform 
+        ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}
+      >
+        {/* Profile Image / Click to Toggle Details */}
         <div
-          className="relative w-[calc(100%)] mx-auto mt-6 rounded-2xl overflow-hidden  cursor-pointer"
+          className="relative group w-full cursor-pointer"
           onClick={toggleDetails}
         >
           <img
             src={profileImg}
             alt="Profile"
-            className={`w-full h-56 object-cover transition-opacity duration-500 ${
-              showDetails ? "opacity-0" : "opacity-100"
-            }`}
+            className={`w-full h-64 object-cover transition-all duration-500 
+            ${showDetails ? "opacity-0 scale-105" : "opacity-100 scale-100"}`}
           />
           {showDetails && (
             <div
-              className="flex flex-col absolute inset-0 m-5 text-gray-800 font-bold text-xs 
-             bg-opacity-80 backdrop-blur-md p-4 rounded-lg border-none transition-opacity duration-500 overflow-y-auto"
+              className={`absolute inset-0 flex flex-col items-center justify-center text-center p-6 
+              transition-opacity duration-500 overflow-hidden 
+              ${
+                darkMode
+                  ? "bg-gray-800 text-white bg-opacity-90"
+                  : "bg-white text-gray-800 bg-opacity-90"
+              }`}
             >
               <TypingEffect
-                text="I see you're curious about me!"
-                typingSpeed={100}
+                text="Curious about me?"
+                typingSpeed={80}
                 deleteSpeed={50}
-                pauseTime={1000}
+                pauseTime={1500}
               />
-
-              <div className="font-normal text-sm mt-2">iisip pako hehe</div>
+              <p className="text-sm mt-2">
+                Passionate about crafting digital solutions.
+              </p>
             </div>
           )}
         </div>
 
-        <div className="mt-5">
-          <div className="gap-2 flex">
-            <div className="flex gap-2 relative group">
-              <div className="text-teal-950 font-bold text-xs uppercase cursor-pointer">
-                Jade
-              </div>
-              <div
-                className="profile-name flex items-center text-left font-bold text-lg uppercase
-               bg-gradient-to-r bg-teal-950 bg-clip-text text-transparent cursor-pointer"
-              >
-                <TypingEffect
-                  text=" Kevin Balocos"
-                  typingSpeed={100}
-                  deleteSpeed={50}
-                  pauseTime={2000}
-                />
-              </div>
-            </div>
+        {/* Profile Info */}
+        <div className="p-6 text-center">
+          {/* Profile Name */}
+          <div className="text-lg font-semibold">
+            <span className={darkMode ? "text-teal-300" : "text-teal-700"}>
+              Jade Kevin Austria Balocos
+            </span>
+            {/* <span className="bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
+              <TypingEffect
+                text=" Kevin Balocos"
+                typingSpeed={100}
+                deleteSpeed={50}
+                pauseTime={2000}
+              />
+            </span> */}
           </div>
-        </div>
 
-        <div className="profile-description text-sm mt-2 text-gray-700">
-          Driven by curiosity and a passion for technology, I specialize in
-          creating dynamic digital experiences. Whether developing seamless
-          applications, structuring data for insights, or designing
-          user-friendly platforms, I turn complex problems into elegant
-          solutions. passion for blending technology, design, and data to craft
-          innovative digital experiences. With a strong background in web
-          development, UI/UX design, and real-time applications.
+          {/* Profile Description */}
+          <p
+            className={`text-sm mt-3 leading-relaxed ${
+              darkMode ? "text-gray-300" : "text-gray-700"
+            }`}
+          >
+            Passionate about crafting innovative digital solutions. I specialize
+            in full-stack development, UI/UX design, and real-time applications,
+            transforming complex ideas into intuitive experiences.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="mt-5 flex justify-center space-x-4">
+            <button
+              className="px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-md 
+              bg-teal-500 text-white hover:bg-teal-600"
+            >
+              View Portfolio
+            </button>
+            <button
+              className="px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-md 
+              border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white"
+            >
+              Contact Me
+            </button>
+          </div>
         </div>
       </div>
     </div>
