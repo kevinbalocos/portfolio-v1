@@ -11,27 +11,22 @@ import {
 const skills = [
   {
     icon: <Code />,
-    title: "Web & App Development",
+    title: "Web Development",
     level: 95,
     description:
       "Proficient in CodeIgniter, React (Vite), MongoDB, and Tailwind CSS.",
   },
-  {
-    icon: <BarChart />,
-    title: "Data Science & Analytics",
-    level: 85,
-    description: "Experienced in machine learning, AI, and data visualization.",
-  },
+
   {
     icon: <Bolt />,
     title: "Real-Time Systems",
-    level: 90,
+    level: 60,
     description: "Expert in WebSockets and live-data applications.",
   },
   {
     icon: <Palette />,
     title: "UI/UX & Digital Design",
-    level: 80,
+    level: 90,
     description: "Skilled in designing futuristic, engaging user interfaces.",
   },
   {
