@@ -157,7 +157,7 @@ const BackgroundProfile = ({ darkMode }) => {
               className="px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-md 
               border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white"
             >
-              Contact Me
+              Portfolio is still in development
             </button>
           </div>
         </div>
