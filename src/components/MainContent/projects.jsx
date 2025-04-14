@@ -70,7 +70,8 @@ const projectData = [
     liveLink: "http://ranking-system.great-site.net/",
   },
   {
-    title: "Queueing System (MERN Stack)",
+    title:
+      "QServe: A Real-Time Queue Management Solution for Government Offices",
     description:
       "A real-time queueing system with MongoDB, optimizing service efficiency.",
     image:

@@ -49,21 +49,7 @@ const categories = [
       { name: "Vite", icon: <SiVite className="text-teal-400 text-sm" /> },
     ],
   },
-  {
-    title: "Tools & Software",
-    items: [
-      { name: "Figma", icon: <SiFigma className="text-teal-400 text-sm" /> },
-      { name: "Docker", icon: <FaDocker className="text-teal-400 text-sm" /> },
-      {
-        name: "Postman",
-        icon: <SiPostman className="text-teal-400 text-sm" />,
-      },
-      {
-        name: "Firebase",
-        icon: <SiFirebase className="text-teal-400 text-sm" />,
-      },
-    ],
-  },
+
   {
     title: "Certifications & Achievements",
     items: [
@@ -72,7 +58,11 @@ const categories = [
         icon: <BsAwardFill className="text-teal-400 text-sm" />,
       },
       {
-        name: "React Pro Certificate",
+        name: "Google Data Analytics Professional Certificate",
+        icon: <BsAwardFill className="text-teal-400 text-sm" />,
+      },
+      {
+        name: "Google IT Support Professional Certificate",
         icon: <BsAwardFill className="text-teal-400 text-sm" />,
       },
     ],
@@ -109,7 +99,7 @@ const categories = [
   },
 ];
 
-const TechnologiesUsed = ({darkMode}) => {
+const TechnologiesUsed = ({ darkMode }) => {
   const containerRef = useRef(null);
   const [width, setWidth] = useState(0);
 
@@ -120,34 +110,40 @@ const TechnologiesUsed = ({darkMode}) => {
   }, []);
 
   return (
-    <div className={`relative flex flex-col items-center justify-center h-[500px] rounded-lg w-full p-4
+    <div
+      className={`relative flex flex-col items-center justify-center h-[500px] rounded-lg w-full p-4
  ${
-  darkMode 
-      ? "bg-gray-900 text-white border-gray-700"
-      : "bg-white text-gray-900 border-gray-200"
+   darkMode
+     ? "bg-gray-900 text-white border-gray-700"
+     : "bg-white text-gray-900 border-gray-200"
  }
-    `}>
+    `}
+    >
       {/* Left Shadow */}
-      <div className={`absolute left-0 top-0 h-full w-12  z-10 ${
-        darkMode 
-        ? "bg-gradient-to-r from-gray-900 via-gray-900  to-transparent"
-        : "bg-gradient-to-r from-white via-white  to-transparent"
-      }`}></div>
+      <div
+        className={`absolute left-0 top-0 h-full w-12  z-10 ${
+          darkMode
+            ? "bg-gradient-to-r from-gray-900 via-gray-900  to-transparent"
+            : "bg-gradient-to-r from-white via-white  to-transparent"
+        }`}
+      ></div>
 
       {/* Right Shadow */}
-      <div className={`absolute right-0 top-0 h-full w-12  z-10 ${
-        darkMode 
-        ? "bg-gradient-to-l from-gray-900 via-gray-900  to-transparent"
-        : "bg-gradient-to-l from-white via-white  to-transparent"
-      }`}></div>
-
+      <div
+        className={`absolute right-0 top-0 h-full w-12  z-10 ${
+          darkMode
+            ? "bg-gradient-to-l from-gray-900 via-gray-900  to-transparent"
+            : "bg-gradient-to-l from-white via-white  to-transparent"
+        }`}
+      ></div>
 
       {categories.map((category, idx) => (
         <div key={idx} className="w-full mb-4">
-          <h3 className={`text-xs tracking-widest ml-5 uppercase font-bold  mb-2 ${darkMode
-            ? "text-white"
-            : "text-black"
-          } `}>
+          <h3
+            className={`text-xs tracking-widest ml-5 uppercase font-bold  mb-2 ${
+              darkMode ? "text-white" : "text-black"
+            } `}
+          >
             {category.title}
           </h3>
           <div className="w-full overflow-hidden relative flex">
@@ -162,17 +158,15 @@ const TechnologiesUsed = ({darkMode}) => {
                 <div
                   key={index}
                   className={`flex items-center space-x-2 border border-teal-500 px-4 py-2  rounded-md shadow-md ${
-                    darkMode
-                    ? "bg-gray-700"
-                    : ""
+                    darkMode ? "bg-gray-700" : ""
                   }`}
                 >
                   {item.icon}
-                  <span className={`text-xs font-semibold  ${
-                    darkMode
-                    ? "text-white"
-                    : "text-black"
-                  }`}>
+                  <span
+                    className={`text-xs font-semibold  ${
+                      darkMode ? "text-white" : "text-black"
+                    }`}
+                  >
                     {item.name}
                   </span>
                 </div>
