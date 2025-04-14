@@ -67,7 +67,7 @@ const projectData = [
       "PHP",
       "Javascript",
     ],
-    liveLink: "https://example.com/faculty-ranking",
+    liveLink: "http://ranking-system.great-site.net/",
   },
   {
     title: "Queueing System (MERN Stack)",

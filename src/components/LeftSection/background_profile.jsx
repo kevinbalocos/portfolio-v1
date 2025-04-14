@@ -147,17 +147,17 @@ const BackgroundProfile = ({ darkMode }) => {
 
           {/* Action Buttons */}
           <div className="mt-5 flex justify-center space-x-4">
-            <button
+            {/* <button
               className="px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-md 
               bg-teal-500 text-white hover:bg-teal-600"
             >
               View Portfolio
-            </button>
+            </button> */}
             <button
               className="px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-md 
               border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white"
             >
-              Contact Me
+             Portfolio in progress. Updates coming soon.
             </button>
           </div>
         </div>
