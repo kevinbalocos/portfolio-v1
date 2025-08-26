@@ -1,131 +1,157 @@
+// components/navbar.jsx
 import React from "react";
-import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"; // Import icons
+import { FaGithub, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Sun, Moon } from "lucide-react";
 
-const Navbar = ({ darkMode, setDarkMode }) => {
+/**
+ * Props:
+ * - darkMode, setDarkMode
+ * - activePage, setActivePage
+ */
+const Navbar = ({ darkMode, setDarkMode, activePage, setActivePage }) => {
+  const linkClassBase = "transition duration-300 cursor-pointer";
+  const activeClass = "underline decoration-teal-500";
+  const lightLink = "text-gray-900 hover:text-gray-400";
+  const darkLink = "text-white hover:text-gray-300";
+
+  const iconWrapperClass = darkMode
+    ? "inline-flex items-center justify-center w-6 h-6 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
+    : "inline-flex items-center justify-center w-6 h-6 bg-white text-black rounded-full hover:bg-gray-100 transition duration-300";
+
   return (
     <>
-      {/* Top Navbar */}
-      <nav className="px-5 py-4   z-50 ">
+      <nav className="px-5 py-4 z-50 bg-transparent">
         <div className="flex justify-between items-center">
-          {/* Logo / Title */}
-          <h1 className="text-xl font-bold text-gray-900 ">JEYDUUU</h1>
+          <h1
+            className={
+              darkMode
+                ? "text-xl font-bold text-white"
+                : "text-xl font-bold text-gray-900"
+            }
+          >
+            JEYDUUU
+          </h1>
 
-          {/* Navigation Links (Visible Only on Desktop) */}
-          <ul className="hidden md:flex space-x-6">
-            <li>
-              <a
-                href="#"
-                className="hover:text-gray-400 transition duration-300 text-gray-900 "
-              >
-                Home
-              </a>
+          {/* Desktop links */}
+          <ul className="hidden md:flex space-x-6 items-center">
+            <li
+              onClick={() => setActivePage("Projects")}
+              className={`${linkClassBase} ${
+                activePage === "Projects" ? activeClass : ""
+              } ${darkMode ? darkLink : lightLink}`}
+            >
+              Projects
             </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-gray-400 transition duration-300 text-gray-900 "
-              >
-                About
-              </a>
+
+            <li
+              onClick={() => setActivePage("Achievements")}
+              className={`${linkClassBase} ${
+                activePage === "Achievements" ? activeClass : ""
+              } ${darkMode ? darkLink : lightLink}`}
+            >
+              Achievements
             </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-gray-400 transition duration-300 text-gray-900 "
-              >
-                Contact
-              </a>
+
+            <li
+              onClick={() => setActivePage("Contact")}
+              className={`${linkClassBase} ${
+                activePage === "Contact" ? activeClass : ""
+              } ${darkMode ? darkLink : lightLink}`}
+            >
+              Contact
             </li>
           </ul>
 
-          {/* Social Media Icons (Always Visible) */}
-          <div className="flex space-x-2 md:space-x-5 lg:space-x-5 ">
+          {/* Social + Theme */}
+          <div className="flex items-center space-x-3 md:space-x-5 lg:space-x-5">
             <a
               href="https://github.com/kevinbalocos"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
+              className={iconWrapperClass}
+              aria-label="GitHub"
             >
-              <FaGithub size={10} />
+              <FaGithub size={14} />
             </a>
             <a
               href="https://www.facebook.com/kevin.balocos.3/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
+              className={iconWrapperClass}
+              aria-label="Facebook"
             >
-              <FaFacebook size={10} />
+              <FaFacebook size={14} />
             </a>
             <a
               href="https://www.instagram.com/jeyduuuuuu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
+              className={iconWrapperClass}
+              aria-label="Instagram"
             >
-              <FaInstagram size={10} />
+              <FaInstagram size={14} />
             </a>
             <a
               href="https://www.linkedin.com/in/jade-kevin-balocos-51b13b358/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-5 h-5 bg-black text-white rounded-full hover:bg-gray-700 transition duration-300"
+              className={iconWrapperClass}
+              aria-label="LinkedIn"
             >
-              <FaLinkedin size={10} />
+              <FaLinkedin size={14} />
             </a>
 
-            <a
+            <button
               onClick={() => setDarkMode(!darkMode)}
-              className="relative inline-flex items-center justify-center w-5 h-5 ml-5 bg-gradient-to-br from-gray-800 to-black border-2 border-transparent hover:border-cyan-400 rounded-full transition-all duration-500 shadow-lg hover:shadow-cyan-500/50 group"
               title="Toggle Dark Mode"
+              aria-pressed={darkMode}
+              aria-label="Toggle dark mode"
+              className={`relative inline-flex items-center justify-center w-7 h-7 ml-2 border-2 border-transparent rounded-full transition-all duration-300 shadow-sm hover:shadow-md ${
+                darkMode ? "bg-gray-700" : "bg-white"
+              }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 opacity-20 blur-lg rounded-full animate-pulse z-0"></div>
-              <div className="z-10 transition-transform duration-300 transform group-hover:rotate-180">
-                {darkMode ? (
-                  <Sun className="text-yellow-300" size={10} />
-                ) : (
-                  <Moon className="text-white" size={10} />
-                )}
-              </div>
-            </a>
+              {darkMode ? (
+                <Sun size={14} className="text-yellow-300" />
+              ) : (
+                <Moon size={14} className="text-black" />
+              )}
+            </button>
           </div>
         </div>
       </nav>
 
-      {/* Bottom Navbar (Mobile Only) */}
-      <nav className="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50 md:hidden">
-        <ul className="flex space-x-6 overflow-x-auto px-4 py-3 whitespace-nowrap">
-          <li>
-            <a
-              href="#"
-              className="text-gray-900 dark:text-white hover:text-gray-400 transition duration-300"
-            >
-              Home
-            </a>
+      {/* Mobile bottom nav */}
+      <nav
+        className={
+          darkMode
+            ? "fixed bottom-0 left-0 w-full bg-gray-900 shadow-md z-50 md:hidden"
+            : "fixed bottom-0 left-0 w-full bg-white shadow-md z-50 md:hidden"
+        }
+      >
+        <ul className="flex justify-around items-center px-4 py-3">
+          <li
+            onClick={() => setActivePage("Projects")}
+            className={`${darkMode ? "text-white" : "text-gray-900"} ${
+              activePage === "Projects" ? "font-semibold" : "font-normal"
+            }`}
+          >
+            Projects
           </li>
-          <li>
-            <a
-              href="#"
-              className="text-gray-900 dark:text-white hover:text-gray-400 transition duration-300"
-            >
-              About
-            </a>
+          <li
+            onClick={() => setActivePage("Achievements")}
+            className={`${darkMode ? "text-white" : "text-gray-900"} ${
+              activePage === "Achievements" ? "font-semibold" : "font-normal"
+            }`}
+          >
+            Achievements
           </li>
-          <li>
-            <a
-              href="#"
-              className="text-gray-900 dark:text-white hover:text-gray-400 transition duration-300"
-            >
-              Contact
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="text-gray-900 dark:text-white hover:text-gray-400 transition duration-300"
-            >
-              Contact
-            </a>
+          <li
+            onClick={() => setActivePage("Contact")}
+            className={`${darkMode ? "text-white" : "text-gray-900"} ${
+              activePage === "Contact" ? "font-semibold" : "font-normal"
+            }`}
+          >
+            Contact
           </li>
         </ul>
       </nav>

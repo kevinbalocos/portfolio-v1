@@ -1,142 +1,193 @@
 import React, { useState, useEffect } from "react";
-import {
-  Code,
-  BarChart,
-  Bolt,
-  Palette,
-  FileText,
-  ChevronDown,
-} from "lucide-react";
+import { Code, Bolt, Palette, FileText, Star, TrendingUp } from "lucide-react";
+// Calculate years based on start dates
+const calculateYears = (startYear) => {
+  return new Date().getFullYear() - startYear;
+};
 
 const skills = [
   {
-    icon: <Code />,
+    icon: <Code className="w-4 h-4" />,
     title: "Web Development",
-    level: 95,
-    description:
-      "Proficient in CodeIgniter, React (Vite), MongoDB, and Tailwind CSS.",
+    startYear: 2020,
+    tech: "React • CSS • Tailwind",
   },
-
   {
-    icon: <Bolt />,
+    icon: <Bolt className="w-4 h-4" />,
     title: "Real-Time Systems",
-    level: 60,
-    description: "Expert in WebSockets and live-data applications.",
+    startYear: 2020,
+    tech: "WebSocket • Live Data",
   },
   {
-    icon: <Palette />,
-    title: "UI/UX & Digital Design",
-    level: 90,
-    description: "Skilled in designing futuristic, engaging user interfaces.",
+    icon: <Palette className="w-4 h-4" />,
+    title: "UI/UX Design",
+    startYear: 2020,
+    tech: "Design Systems",
   },
   {
-    icon: <FileText />,
-    title: "File Management Systems",
-    level: 88,
-    description:
-      "Developed advanced file handling with structured categorization.",
+    icon: <FileText className="w-4 h-4" />,
+    title: "AI Development",
+    startYear: 2024,
+    tech: "Providing AI to existing systems",
   },
-];
+].map((skill) => ({ ...skill, years: calculateYears(skill.startYear) }));
 
-const RightSectionExpertiseSkills = ({ darkMode }) => {
-  const [expanded, setExpanded] = useState(true);
-  const [highlightedSkill, setHighlightedSkill] = useState(0);
-  const [sortedSkills, setSortedSkills] = useState(skills);
+const RightSectionExpertiseSkills = ({ darkMode = false }) => {
+  const [activeSkill, setActiveSkill] = useState(0);
 
-  // Auto-highlight different expertise every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setHighlightedSkill((prev) => (prev + 1) % skills.length);
-    }, 5000);
+      setActiveSkill((prev) => (prev + 1) % skills.length);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
-  // Sorting function
-  const sortSkills = () => {
-    const sorted = [...sortedSkills].sort((a, b) => b.level - a.level);
-    setSortedSkills(sorted);
-  };
+  const totalYears = skills.reduce((sum, skill) => sum + skill.years, 0);
 
   return (
-    <div className="">
-      <div
-        className={`shadow-md rounded-lg p-5 border transition ${
-          darkMode
-            ? "bg-gray-900 text-white border-gray-700"
-            : "bg-white text-gray-900 border-gray-200"
-        }`}
-      >
-        {/* Toggle Section */}
-        <div
-          className="flex justify-between items-center cursor-pointer"
-          onClick={() => setExpanded(!expanded)}
-        >
-          <h2
-            className={`text-md font-semibold uppercase tracking-tighter flex items-center gap-2 ${
-              darkMode ? "text-white" : "text-gray-900"
+    <div
+      className={`rounded-xl p-5 border transition-all duration-300 ${
+        darkMode
+          ? "bg-gray-900 backdrop-blur-sm border-gray-700/50"
+          : "bg-white backdrop-blur-sm border-gray-200/50"
+      }`}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-2">
+          <div
+            className={`p-2 rounded-lg ${
+              darkMode ? "bg-teal-500/20" : "bg-teal-100"
             }`}
           >
-            <Bolt className="w-6 h-6 text-teal-500" /> Expertise & Skills
-          </h2>
-          <ChevronDown
-            className={`w-5 h-5 text-teal-600 transition-transform ${
-              expanded ? "rotate-180" : ""
-            }`}
-          />
-        </div>
-
-        {/* Expertise Skills */}
-        {expanded && (
-          <div className="mt-3">
-            <button
-              onClick={sortSkills}
-              className={`w-full text-teal-600 uppercase border border-teal-600 px-3 py-2 rounded-md cursor-pointer transition ${
-                darkMode
-                  ? "bg-gray-800 text-white hover:bg-gray-700 border-teal-500"
-                  : "bg-white text-gray-900 hover:bg-teal-50"
+            <Star className="w-4 h-4 text-teal-500" />
+          </div>
+          <div>
+            <h2
+              className={`text-lg font-bold ${
+                darkMode ? "text-white" : "text-gray-900"
               }`}
             >
-              Sort by Proficiency
-            </button>
+              Skills
+            </h2>
+            <p
+              className={`text-xs ${
+                darkMode ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              {totalYears} years experience
+            </p>
+          </div>
+        </div>
+        <div
+          className={`px-2 py-1 rounded-full text-xs font-medium ${
+            darkMode
+              ? "bg-teal-900/30 text-teal-300"
+              : "bg-teal-100 text-teal-700"
+          }`}
+        >
+          {skills.length} skills
+        </div>
+      </div>
 
-            <div className="grid grid-cols-1 gap-3 mt-3">
-              {sortedSkills.map((skill, index) => (
-                <div
-                  key={index}
-                  className={`flex items-start gap-3 p-3 rounded-md border shadow-sm transition ${
-                    darkMode
-                      ? `border-gray-600 text-white ${
-                          index === highlightedSkill
-                            ? "bg-gray-800 scale-105 shadow-md"
-                            : "bg-gray-900"
-                        }`
-                      : `border-gray-300 text-gray-900 ${
-                          index === highlightedSkill
-                            ? "bg-gray-100 scale-105 shadow-md"
-                            : "bg-white"
-                        }`
-                  }`}
-                >
-                  <div className="text-teal-400 w-6 h-6">{skill.icon}</div>
+      {/* Skills List */}
+      <div className="space-y-3">
+        {skills.map((skill, index) => {
+          const isActive = index === activeSkill;
+          const seniorityColor =
+            skill.years >= 6 ? "emerald" : skill.years >= 3 ? "blue" : "amber";
+
+          return (
+            <div
+              key={index}
+              className={`relative p-3 rounded-xl border transition-all duration-300 cursor-pointer group ${
+                darkMode
+                  ? `border-gray-700/50 ${
+                      isActive
+                        ? "bg-gray-800/60 border-teal-500/40 shadow-lg shadow-teal-500/10"
+                        : "bg-gray-800/30 hover:bg-gray-800/50"
+                    }`
+                  : `border-gray-200/50 ${
+                      isActive
+                        ? "bg-white border-teal-300/40 shadow-lg shadow-teal-500/10"
+                        : "bg-gray-50/30 hover:bg-white/60"
+                    }`
+              }`}
+              onClick={() => setActiveSkill(index)}
+            >
+              {/* Active indicator */}
+              {isActive && (
+                <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-8 bg-teal-500 rounded-full" />
+              )}
+
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <div
+                    className={`p-1.5 rounded-lg transition-colors ${
+                      isActive
+                        ? "bg-teal-500/20 text-teal-400"
+                        : darkMode
+                        ? "bg-gray-700 text-gray-400"
+                        : "bg-gray-200 text-gray-600"
+                    }`}
+                  >
+                    {skill.icon}
+                  </div>
                   <div>
-                    <h3 className="font-medium">{skill.title}</h3>
-                    <p className="text-sm">{skill.description}</p>
-                    <div
-                      className={`w-full h-2 rounded-full mt-2 ${
-                        darkMode ? "bg-gray-700" : "bg-gray-200"
+                    <h3
+                      className={`text-sm font-semibold ${
+                        darkMode ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      <div
-                        className="bg-teal-500 h-2 rounded-full transition-all"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                      {skill.title}
+                    </h3>
                   </div>
                 </div>
-              ))}
+
+                <div className="flex items-center gap-1">
+                  <span
+                    className={`text-xs font-bold px-2 py-1 rounded-full ${
+                      seniorityColor === "emerald"
+                        ? "bg-emerald-100 text-emerald-700"
+                        : seniorityColor === "blue"
+                        ? "bg-blue-100 text-blue-700"
+                        : "bg-amber-100 text-amber-700"
+                    }`}
+                  >
+                    {skill.years}y
+                  </span>
+                </div>
+              </div>
+
+              {/* Tech Stack */}
+              <p
+                className={`text-xs ${
+                  darkMode ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                {skill.tech}
+              </p>
             </div>
-          </div>
-        )}
+          );
+        })}
+      </div>
+
+      {/* Footer Stats */}
+      <div
+        className={`mt-5 pt-3 border-t flex items-center justify-center gap-4 ${
+          darkMode ? "border-gray-700/50" : "border-gray-200/50"
+        }`}
+      >
+        <div className="flex items-center gap-1">
+          <TrendingUp className="w-3 h-3 text-teal-500" />
+          <span
+            className={`text-xs font-medium ${
+              darkMode ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            Growing expertise
+          </span>
+        </div>
       </div>
     </div>
   );

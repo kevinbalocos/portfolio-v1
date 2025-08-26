@@ -18,7 +18,14 @@ import {
   SiPostman,
   SiGithub,
   SiFirebase,
+  SiMysql,
+  SiPhp,
+  SiSocketdotio,
+  SiAxios,
+  SiFramer,
+  SiDocker,
 } from "react-icons/si";
+
 import { BsAwardFill, BsPeopleFill, BsFillLightbulbFill } from "react-icons/bs";
 
 const categories = [
@@ -32,6 +39,7 @@ const categories = [
         name: "React",
         icon: <FaReact className="text-teal-400 text-sm animate-spin" />,
       },
+      { name: "Vite", icon: <SiVite className="text-teal-400 text-sm" /> },
       {
         name: "Tailwind CSS",
         icon: <SiTailwindcss className="text-teal-400 text-sm" />,
@@ -45,8 +53,29 @@ const categories = [
         name: "MongoDB",
         icon: <SiMongodb className="text-teal-400 text-sm" />,
       },
+      { name: "MySQL", icon: <SiMysql className="text-teal-400 text-sm" /> },
+      {
+        name: "CodeIgniter",
+        icon: <SiPhp className="text-teal-400 text-sm" />,
+      },
+      { name: "PHP", icon: <SiPhp className="text-teal-400 text-sm" /> },
+      {
+        name: "REST API",
+        icon: <SiPostman className="text-teal-400 text-sm" />,
+      },
+      {
+        name: "WebSockets",
+        icon: <SiSocketdotio className="text-teal-400 text-sm" />,
+      },
       { name: "Git", icon: <FaGitAlt className="text-teal-400 text-sm" /> },
-      { name: "Vite", icon: <SiVite className="text-teal-400 text-sm" /> },
+      { name: "GitHub", icon: <SiGithub className="text-teal-400 text-sm" /> },
+      { name: "Axios", icon: <SiAxios className="text-teal-400 text-sm" /> },
+      {
+        name: "Framer Motion",
+        icon: <SiFramer className="text-teal-400 text-sm" />,
+      },
+      { name: "Figma", icon: <SiFigma className="text-teal-400 text-sm" /> },
+      { name: "Docker", icon: <SiDocker className="text-teal-400 text-sm" /> },
     ],
   },
 
@@ -65,8 +94,13 @@ const categories = [
         name: "Google IT Support Professional Certificate",
         icon: <BsAwardFill className="text-teal-400 text-sm" />,
       },
+      {
+        name: "Solo Open Source Project Contributor",
+        icon: <BsAwardFill className="text-teal-400 text-sm" />,
+      },
     ],
   },
+
   {
     title: "Soft Skills",
     items: [
@@ -82,8 +116,17 @@ const categories = [
         name: "Leadership",
         icon: <BsPeopleFill className="text-teal-400 text-sm" />,
       },
+      {
+        name: "Adaptability",
+        icon: <BsFillLightbulbFill className="text-teal-400 text-sm" />,
+      },
+      {
+        name: "Time Management",
+        icon: <BsFillLightbulbFill className="text-teal-400 text-sm" />,
+      },
     ],
   },
+
   {
     title: "Open Source Contributions",
     items: [
