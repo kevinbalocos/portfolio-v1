@@ -75,7 +75,7 @@ const Contact = ({ darkMode }) => {
       console.error(err);
       setStatus({
         loading: false,
-        msg: "Could not send. Opening mail client...",
+        msg: "teka inaayos pa, busy person ngani",
         error: true,
       });
       setTimeout(sendMailFallback, 1000);
