@@ -162,7 +162,7 @@ const TechnologiesUsed = ({ darkMode }) => {
  }
     `}
     >
-      {/* Left Shadow   */}
+      {/* Left Shadow  */}
       <div
         className={`absolute left-0 top-0 h-full w-12  z-10 ${
           darkMode
