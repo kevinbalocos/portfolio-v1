@@ -44,15 +44,6 @@ const Navbar = ({ darkMode, setDarkMode, activePage, setActivePage }) => {
             </li>
 
             <li
-              onClick={() => setActivePage("Achievements")}
-              className={`${linkClassBase} ${
-                activePage === "Achievements" ? activeClass : ""
-              } ${darkMode ? darkLink : lightLink}`}
-            >
-              Achievements
-            </li>
-
-            <li
               onClick={() => setActivePage("Contact")}
               className={`${linkClassBase} ${
                 activePage === "Contact" ? activeClass : ""
@@ -137,14 +128,7 @@ const Navbar = ({ darkMode, setDarkMode, activePage, setActivePage }) => {
           >
             Projects
           </li>
-          <li
-            onClick={() => setActivePage("Achievements")}
-            className={`${darkMode ? "text-white" : "text-gray-900"} ${
-              activePage === "Achievements" ? "font-semibold" : "font-normal"
-            }`}
-          >
-            Achievements
-          </li>
+       
           <li
             onClick={() => setActivePage("Contact")}
             className={`${darkMode ? "text-white" : "text-gray-900"} ${

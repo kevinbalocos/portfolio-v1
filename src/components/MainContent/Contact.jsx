@@ -15,7 +15,7 @@ import {
   Globe,
 } from "lucide-react";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_BASE || "";
 const NAVBAR_HEIGHT = 70;
 
 const Contact = ({ darkMode }) => {
@@ -56,7 +56,10 @@ const Contact = ({ darkMode }) => {
     setStatus({ loading: true, msg: null, error: false });
 
     try {
-      const resp = await fetch(`${API_BASE}/api/send-contact`, {
+      const url = API_BASE
+        ? `${API_BASE}/api/send-contact`
+        : "/api/send-contact";
+      const resp = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

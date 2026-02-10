@@ -5,13 +5,13 @@ import ExpertiseSkills from "./components/RightSection/right_section_expertise_s
 import BackgroundProfile from "./components/LeftSection/background_profile";
 import TecnologiesUsed from "./components/RightSection/technologies_used";
 import Projects from "./components/MainContent/projects";
-import Achievements from "./components/MainContent/Achievements";
+
 import Contact from "./components/MainContent/Contact";
 import ParticlesBg from "particles-bg";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
-    () => localStorage.getItem("theme") === "dark"
+    () => localStorage.getItem("theme") === "dark",
   );
   const [activePage, setActivePage] = useState("Projects"); // Projects | Achievements | Contact
 
@@ -58,9 +58,7 @@ const App = () => {
 
           <main className="w-full p-1 flex flex-col z-10 overflow-auto">
             {activePage === "Projects" && <Projects darkMode={darkMode} />}
-            {activePage === "Achievements" && (
-              <Achievements darkMode={darkMode} />
-            )}
+
             {activePage === "Contact" && <Contact darkMode={darkMode} />}
           </main>
 

@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://kevinbalocos.github.io/portfolio-v1",
   "scripts": {
-    "kevpsy": "vite",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",

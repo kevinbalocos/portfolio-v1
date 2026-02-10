@@ -51,10 +51,14 @@ export default async function handler(req, res) {
 
     const { name = "Anonymous", email, subject = "Portfolio Message", message } = req.body || {};
     if (!email || !message) return res.status(400).json({ ok: false, message: "Email and message are required" });
+    if (!process.env.TO_EMAIL) {
+      return res.status(500).json({ ok: false, message: "Server email not configured" });
+    }
 
     const mailOptions = {
       from: `${process.env.FROM_NAME || "Portfolio"} <${process.env.FROM_EMAIL || process.env.SMTP_USER}>`,
       to: process.env.TO_EMAIL,
+      replyTo: email,
       subject: `[Portfolio Contact] ${subject}`,
       text: `From: ${name}\nEmail: ${email}\n\n${message}`,
       html: `<p><strong>From:</strong> ${name}<br/><strong>Email:</strong> ${email}</p><hr/><p>${(message||"").replace(/\n/g,'<br/>')}</p>`
